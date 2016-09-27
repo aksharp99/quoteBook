@@ -10,12 +10,17 @@ angular.module('quoteBook').service('dataService', function() {
   ];
 
   this.getQuotes = function() {
+    if(localStorage.getItem('quotes')) {
+      quotes = JSON.parse(localStorage.getItem('quotes'));
+    }
+    console.log(quotes);
     return quotes;
-  }
+    }
 
   this.addData = function(newQuote) {
     if(newQuote.text && newQuote.author){
       quotes.push(newQuote);
+      localStorage.setItem('quotes',JSON.stringify(quotes));
       return true;
     }
     return false;
@@ -25,9 +30,10 @@ angular.module('quoteBook').service('dataService', function() {
     for (var i = 0; i < quotes.length; i++) {
       if (quotes[i].text.toLowerCase() === textToRemove.toLowerCase()) {
         quotes.splice(i--,1);
+
       }
     }
-
+    localStorage.setItem('quotes',JSON.stringify(quotes));
   };
 
 
