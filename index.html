@@ -14,10 +14,10 @@
     <div class="jumbotron">
 
       <h1>Quote Book</h1>
-<p ng-repeat="quote in getQuotes | filter: filterText track by $index">
-  <span class="text animated flash">{{quote.text}}</span>
-  <span class="author animated flash"> -- {{quote.author}}</span>
-  <button class="btn btn-danger animated rubberBand" ng-click="deleteMe(quote.text)">Delete</button>
+<p class="animated zoomIn" ng-repeat="quote in getQuotes | filter: filterText track by $index">
+  <span class="text">{{quote.text}}</span>
+  <span class="author"> -- {{quote.author}}</span>
+  <button class="btn btn-danger" ng-click="deleteMe(quote.text)">Delete</button>
 </p>
 
 
