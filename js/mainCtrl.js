@@ -1,24 +1,17 @@
 angular.module('quoteBook').controller('mainCtrl', function($scope, dataService) {
+  $scope.test = "Akshar";
 
-$scope.getQuotes = dataService.getQuotes();
+  $scope.quotes = dataService.getData();
 
-$scope.deleteMe = function(textToRemove) {
-  dataService.removeData(textToRemove);
-}
-
-$scope.addQuote = function(){
-  var newQuote = {
-    text:$scope.newQuoteText,
-    author:$scope.newQuoteAuthor
+  $scope.deleteQuote = function(textToRemove) {
+    dataService.removeData(textToRemove);
   }
-  if(dataService.addData(newQuote))
-  {
-    $scope.newQuoteText = '';
-    $scope.newQuoteAuthor = '';
+
+  $scope.addDemQuotes = function(newQuote) {
+    newQuote = {
+    text: $scope.addQuote,
+    author: $scope.addAuthor
   }
-}
-
-
-
-
+  dataService.addData(newQuote)
+  }
 })
